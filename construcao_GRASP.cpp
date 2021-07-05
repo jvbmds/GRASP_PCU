@@ -1,8 +1,8 @@
-#include "cabecalho.h"
+#include "/home/joao/GRASP_PCU/Cabecalho.hpp"
 
 
 int maxpeca(registro peca[] , int num_itens_const, double barra_aux, vector<int> demanda_aux)
-{ // Retorna o indice da maior peça que cabe na barra restante e tem demanda maior que 0.
+{ // Retorna o indice da maior peï¿½a que cabe na barra restante e tem demanda maior que 0.
 	int ibeta = -1; //Guarda o ?ndice  da pe?a desejada.
 	int i;
 	for (i = 0; i < num_itens_const; i++)
@@ -140,7 +140,7 @@ string Const_GRASP(int num_itens_const, registro peca_const[], int barra_padrao,
 		vector <int> Aux(num_itens_const);// Auxiliar usado para ver quantas vezes se pode repetir o padr?o de corte adquirido
 
 
-		//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@  construção de um padrao @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+		//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@  construï¿½ï¿½o de um padrao @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 		do {// while (barra_aux >= peca[imnp].tamanho && imnp >= 0);
 			imp = maxpeca(peca_const, num_itens_const, barra_aux, demanda_aux);//devolve o indice da maior peca com demanda disponivel
@@ -154,7 +154,7 @@ string Const_GRASP(int num_itens_const, registro peca_const[], int barra_padrao,
 			//!!!!!!!!!!!!!!!!!!!!!!!!!!!!! escolha do item !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
-			//!!!!!!!!!!!!!!!!!!!!!!!! ve quantas vezes o padrão pode rodar sem estourar a demanda
+			//!!!!!!!!!!!!!!!!!!!!!!!! ve quantas vezes o padrï¿½o pode rodar sem estourar a demanda
 			// do item escolhido !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 			cb = barra_aux / peca_const[ik].tamanho;
@@ -173,7 +173,7 @@ string Const_GRASP(int num_itens_const, registro peca_const[], int barra_padrao,
 				}
 			}
 
-			//!!!!!!!!!!!!!!!!!!!!!!!! ve quantas vezes o padrão pode rodar sem estourar a demanda
+			//!!!!!!!!!!!!!!!!!!!!!!!! ve quantas vezes o padrï¿½o pode rodar sem estourar a demanda
 			// do item escolhido !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
@@ -182,7 +182,7 @@ string Const_GRASP(int num_itens_const, registro peca_const[], int barra_padrao,
 			barra_aux = barra_aux - cb * peca_const[ik].tamanho;
 		} while (barra_aux >= peca_const[imnp].tamanho && imnp >= 0);
 
-		//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@  construção de um padrao @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+		//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@  construï¿½ï¿½o de um padrao @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 
 		//!!!!!!!!!!!!!!!!!!!!!!!!! verifica a quantidade de vezes que o padrao pode ser executado !!!!!!!!!!!!!!!
@@ -365,7 +365,7 @@ string Const_GRASP(int num_itens_const, registro peca_const[], int barra_padrao,
 			}
 		}
 
-		//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  escreve o padrão criado  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  escreve o padrï¿½o criado  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		Aux.clear();
 		PC.clear();
 	} while (imnp >= 0);
@@ -373,7 +373,7 @@ string Const_GRASP(int num_itens_const, registro peca_const[], int barra_padrao,
 	//################################ construcao do padrao de corte completo #############################################
 
 
-	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  escreve o padrão criado  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  escreve o padrï¿½o criado  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
 	tempo = clock();
@@ -421,7 +421,7 @@ string Const_GRASP(int num_itens_const, registro peca_const[], int barra_padrao,
 	A3.erase();
 	A4.erase();
 
-	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  escreve o padrão criado  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  escreve o padrï¿½o criado  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	/*
 	///////////////////////////////////////////////MUDEI AQUI FIM
 

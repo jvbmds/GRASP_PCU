@@ -1,4 +1,4 @@
-#include "cabecalho.h"
+#include "/home/joao/GRASP_PCU/Cabecalho.hpp"
 
 void troca_GRASP2D(registro& a, registro& b)
 {// Funcao que troca o conteudo de 2 variaveis.
@@ -278,14 +278,14 @@ int central(vector<registro> item, int barra_padrao, int num_itens_const, clock_
     /*char* p;
     long arg = strtol(argv[2], &p, 10);
     if (*p != '\0'){
-        cout << "não foi possível rodar o programa pois o  segundo argumento passado não é um número";
+        cout << "nï¿½o foi possï¿½vel rodar o programa pois o  segundo argumento passado nï¿½o ï¿½ um nï¿½mero";
         return 1;
     }
     int i = arg;
     srand( (unsigned)time(NULL) + i); // Retorna uma sequencia de numeros pseudo-aleatorio.
     i = 0;*/
 
-	//string N_instancia = argv[1];// Guarda o nome da instância
+	//string N_instancia = argv[1];// Guarda o nome da instï¿½ncia
 	string N_saida = N_instancia + "_Teste" + repeticao_instancia +".txt";//argv[2]; //"_Teste1";//// + ".txt";
 	int repeticao_GRASP = 50;
 	clock_t tempo_const;
