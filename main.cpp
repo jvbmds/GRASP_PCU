@@ -1,11 +1,5 @@
     #include "/home/joao/GRASP_PCU/Cabecalho.hpp"
 
-    int central(vector<registro> item, int barra_padrao, int num_itens_const, clock_t t0_GRASP,
-    string N_instancia, string repeticao_instancia, string& M, string& R,
-    clock_t& tempo_best_sol, int& best_sol, double& alfa_sol, vector <vector<int> >& MS);
-
-    
-
     int main(int argc,char** argv)
     {
         // Declaracao das variaveis
