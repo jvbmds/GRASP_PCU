@@ -1,4 +1,4 @@
-#include "/home/joao/GRASP_PCU/Cabecalho.hpp"
+#include "Cabecalho.hpp"
 
 
 int maxpeca(registro peca[] , int num_itens_const, double barra_aux, vector<int> demanda_aux)

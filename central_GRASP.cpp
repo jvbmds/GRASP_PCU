@@ -1,4 +1,4 @@
-#include "/home/joao/GRASP_PCU/Cabecalho.hpp"
+#include "Cabecalho.hpp"
 
 void troca_GRASP2D(registro& a, registro& b)
 {// Funcao que troca o conteudo de 2 variaveis.

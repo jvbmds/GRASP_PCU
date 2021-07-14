@@ -1,4 +1,4 @@
-#include "/home/joao/GRASP_PCU/Cabecalho.hpp"
+#include "Cabecalho.hpp"
 
 string melhoria_bl(int num_itens_bl, registro peca_bl[], int barra_padrao, int num_barra_bl, int const_sol,
 	vector<vector<int>>& MS, int& qtd_padroes_const, int& local_sol, int num_itens_const,

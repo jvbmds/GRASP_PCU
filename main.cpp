@@ -1,4 +1,4 @@
-    #include "/home/joao/GRASP_PCU/Cabecalho.hpp"
+    #include "Cabecalho.hpp"
 
     int main(int argc,char** argv)
     {
