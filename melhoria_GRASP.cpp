@@ -22,7 +22,7 @@ string melhoria_bl(int num_itens_bl, registro peca_bl[], int barra_padrao, int n
 	int imnp;//Guarda o indice da menor pe?a com demanda restante.
 //	int barra_padrao;// Tamanho da barra padr?o.
 	int perda;//Guarda a perda de cada padr?o criado.
-	int perda_total = 0;//Guarda o somat?rio da perda dos padr?es.
+	int perda_total = 0;//Guarda o somatorio da perda dos padroes.
 	int barra_aux;// auxiliar que guarda o tamanho restante da barra que pode ser utilizado.
 
 //	int mpi = 0;//guarda a maior perda individual
