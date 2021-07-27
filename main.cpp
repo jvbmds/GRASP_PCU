@@ -118,7 +118,6 @@ int main(int argc, char** argv)
 
 	// chama funcao que escreve a saida do desenho
 	str_desenho = S_saida_desenho(MS, item, item_residual, tamanho_barra_padrao, best_sol);
-	cout << str_desenho;
 	// escreve o arquivo de saida "desenho.txt"
 	teste.open("desenho.txt", ios::trunc);
 	if (!teste.good()) {
@@ -164,7 +163,6 @@ string S_saida_desenho(
 	for (i = 0; i < I_padrao_GRASP; i++) {
 
 		qtd_item_padrao = 0;
-		cout << MS[i].size();
 		for (j = 0; j < MS[i].size() - 2; j++) {
 			if (MS[i][j] != 0) {
 				qtd_item_padrao++;
@@ -172,11 +170,9 @@ string S_saida_desenho(
 		}
 
 		S_desenho += to_string(qtd_item_padrao) + '|';
-		cout << '\t' << MS[i].size();
 		for (j = 0; j < MS[i].size() - 2; j++) {
 
 			if (MS[i][j] != 0) {
-				cout << '\n' << MS[i][j];
 				S_desenho += to_string(MS[i][j]) + '|';
 				S_desenho += to_string(item[j].tamanho) + '|';
 
