@@ -287,7 +287,7 @@ int central(vector<registro> item, int barra_padrao, int num_itens_const, clock_
 
 	//string N_instancia = argv[1];// Guarda o nome da inst�ncia
 	string N_saida = N_instancia + "_Teste" + repeticao_instancia +".txt";//argv[2]; //"_Teste1";//// + ".txt";
-	int repeticao_GRASP = 50;
+	int repeticao_GRASP = 1;
 	clock_t tempo_const;
 	clock_t tempo_melh;
 	clock_t tempo_sol;
