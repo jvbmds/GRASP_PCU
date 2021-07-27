@@ -1,5 +1,12 @@
     #include "Cabecalho.hpp"
 
+    string S_saida_desenho(
+        vector<vector<int>> MS,
+        vector<registro> item,
+        vector<registro> item_residual,
+        int barra_padrao,
+        int best_sol);
+
     int main(int argc,char** argv)
     {
         // Declaracao das variaveis
@@ -15,6 +22,7 @@
         int numero_barras = 0;
         int numero_barras_total = 0;
         //int deslocamento = 0;
+
         int best_sol = 0;
         int tamanho_barra_padrao;
         int numero_itens_instancia;
@@ -28,7 +36,7 @@
         string M;
         string R = " ";
         string estatistica_str;
-        string str_excel;
+        string str_desenho;
         string N_saida;
         
         clock_t tempo;
@@ -108,9 +116,78 @@
 
             estatistica_str.clear();
 
+            // chama funcao que escreve a saida do desenho
+            str_desenho = S_saida_desenho(MS,item,item_residual,tamanho_barra_padrao,best_sol);
+            cout << str_desenho;
+            // escreve o arquivo de saida "desenho.txt"
+            teste.open("desenho.txt", ios::trunc);
+            if (!teste.good()) {
+                cout << "o arquivo de saida nao pode ser aberto." << endl;
+                return 1;
+            }
+            teste << str_desenho << endl;
+            teste.close();
+
 
             return 0;
 
         }  /* END main */
+
+        string S_saida_desenho(
+        vector<vector<int>> MS,
+        vector<registro> item,
+        vector<registro> item_residual,
+        int barra_padrao,
+        int best_sol) {
+        
+        int a = 0;
+        int i, j;
+        int I_padrao_GRASP = 0;
+        int I_padrao_total = 0;
+        int perda = barra_padrao;
+        int qtd_item_padrao = 0;
+
+        string S_desenho = "";
+        
+        // Conta a quantidade de padroes da GRASP
+        for (i = 0; i < MS.size(); i++) {
+            if (a < best_sol) {
+                I_padrao_GRASP++;
+                a += MS[i][MS[i].size() - 1];
+            }
+        }
+        
+        I_padrao_total = I_padrao_GRASP;
+        S_desenho = to_string(I_padrao_total) + '|';
+        S_desenho += to_string(barra_padrao) + '\n';
+
+        for (i = 0; i < I_padrao_GRASP; i++) {
+            
+            qtd_item_padrao = 0;
+            cout << MS[i].size();
+            for (j = 0; j < MS[i].size() - 2; j++) {
+                if (MS[i][j] != 0) {
+                    qtd_item_padrao++;
+                }
+            }
+            
+            S_desenho += to_string(qtd_item_padrao) + '|';
+            cout << '\t' << MS[i].size();
+            for (j = 0; j < MS[i].size() - 2; j++) {
+                
+                if (MS[i][j] != 0) {
+                    cout << '\n' << MS[i][j];    
+                    S_desenho += to_string(MS[i][j]) + '|';
+                    S_desenho += to_string(item_residual[j].tamanho) + '|';
+
+                }
+            }
+
+            S_desenho += to_string(MS[i][MS[i].size() - 2]) + '|';
+            S_desenho += to_string(MS[i][MS[i].size() - 1]) + '\n';
+            
+        }
+        return (S_desenho);
+    }
 
     
