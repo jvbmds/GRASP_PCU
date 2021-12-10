@@ -1,7 +1,7 @@
 #include "Cabecalho.hpp"
 
-void troca_GRASP2D(registro& a, registro& b)
-{// Funcao que troca o conteudo de 2 variaveis.
+// Funcao que troca o conteudo de 2 variaveis.
+void troca_GRASP2D(registro& a, registro& b){
 	registro aux = a;
 	a = b;
 	b = aux;
@@ -65,7 +65,6 @@ string const_prob_bl  (int qtd_padroes_const,vector<vector<int> >&MS_aux,int num
 	int imqp;//guarda o indice da linha do padrao com a maior quantidade de pecas n?o-nulas
 	int mpp = 0;
 	int arit;// variavel utilizada para evitar estouro aritmetico
-	//int num_barra_bl = 0;
 	int aa1 = 0, aa2 = 0, aa3 = 0, aa4 = 0, sorteio = -1;
 
 
@@ -189,8 +188,6 @@ string const_prob_bl  (int qtd_padroes_const,vector<vector<int> >&MS_aux,int num
 	string A0, A1, A2, A7, A11;// , A9;
 	saida_str += "\nProblema da busca local:\n\n";
 	saida_str += "Maior perda individual: PC";
-	//arit = impi + 1;
-	//saida_str += to_string(arit);
 	a0 << impi + 1;
 	a0 >> A0;
 	saida_str += A0;
@@ -275,23 +272,11 @@ int central(vector<registro> item, int barra_padrao, int num_itens_const, clock_
 	string N_instancia, string repeticao_instancia, string& M, string& R,
 	clock_t& tempo_best_sol, int& best_sol, double& alfa_sol, vector <vector<int> >& MS){
 
-    /*char* p;
-    long arg = strtol(argv[2], &p, 10);
-    if (*p != '\0'){
-        cout << "n�o foi poss�vel rodar o programa pois o  segundo argumento passado n�o � um n�mero";
-        return 1;
-    }
-    int i = arg;
-    srand( (unsigned)time(NULL) + i); // Retorna uma sequencia de numeros pseudo-aleatorio.
-    i = 0;*/
-
-	//string N_instancia = argv[1];// Guarda o nome da inst�ncia
-	string N_saida = N_instancia + "_Teste" + repeticao_instancia +".txt";//argv[2]; //"_Teste1";//// + ".txt";
+	string N_saida = N_instancia + "_Teste" + repeticao_instancia +".txt";
 	int repeticao_GRASP = 50;
 	clock_t tempo_const;
 	clock_t tempo_melh;
 	clock_t tempo_sol;
-	//int best_sol = 0;
 	int perda_total = 0;
 	int perda_total_bl = 0;
 	int perda_total_const = 0;
@@ -304,17 +289,13 @@ int central(vector<registro> item, int barra_padrao, int num_itens_const, clock_
 	int qtd_padroes_bl = 0;
 	int qtd_padroes_total = 0;
 	int best_qtd_padroes_total = 0;
-	//int barra_padrao = 0;
-	//int num_itens_const = 0;
 	int local_sol = 0;
 	int const_sol = 0;
 	double best_alfa = 0;
 	int best_freq = 0;
-	//double alfa_sol = 0;
 
 	srand((unsigned)time(NULL));
 
-	//string estatistica_str;
 	string saida_const;
 	string melhoria_bl_str;
 	string saida_const_prob;
@@ -323,8 +304,6 @@ int central(vector<registro> item, int barra_padrao, int num_itens_const, clock_
 	string best_saida;
     string str_aux;
 
-
-	//clock_t t0_GRASP;// Variavel que guarda o tempo inicial do programa.
 	clock_t tempo; //Variavel que guarda o instante em que a solucao foi escrita.
 
 	vector<int> ind_padroes_escolhidos(100, -1);
