@@ -7,10 +7,13 @@ void troca_GRASP2D(registro& a, registro& b){
 	b = aux;
 }
 
-int particao_GRASP2D(registro peca[], int l, int r)
 // Procedimento auxiliar que recebe um segmento em peca[], a extremidade
 // esquerda do segmento em l e a extremidade direita em r.
 // Retorna peca[] reordenado decrescente.
+int particao_GRASP2D(
+	registro peca[], 
+	int l, 
+	int r)
 {
 	int j, k;
 	j = l;
@@ -25,8 +28,8 @@ int particao_GRASP2D(registro peca[], int l, int r)
 	return j;
 }
 
-void quicksort_GRASP2D(registro peca[], int l, int r)
-{// Procedimento principal do algoritmo de ordenacao QuickSort
+// Procedimento principal do algoritmo de ordenacao QuickSort
+void quicksort_GRASP2D(registro peca[], int l, int r){
 	int j;
 	if (l < r) {
 		j = particao_GRASP2D(peca, l, r);
@@ -35,11 +38,12 @@ void quicksort_GRASP2D(registro peca[], int l, int r)
 	}
 }
 
+//construcao do probelma da melhoria
 string const_prob_bl  (int qtd_padroes_const,vector<vector<int> >&MS_aux,int num_itens_const,
 	vector<int> &ind_padroes_escolhidos,int &qtd_padroes_escolhidos,registro peca_const[],registro peca_bl[],
-	int &num_itens_bl, int &perda_prob_bl,int &num_barra_bl) {//construcao do probelma da melhoria
+	int &num_itens_bl, int &perda_prob_bl,int &num_barra_bl) {
 
-	//cout << "inicio problema" << endl;
+	
 
 	if ((int)ind_padroes_escolhidos.size() < qtd_padroes_const) {
 		ind_padroes_escolhidos.resize(qtd_padroes_const, -1);

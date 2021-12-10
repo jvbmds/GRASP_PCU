@@ -20,14 +20,9 @@ int central(vector<registro> item, int barra_padrao, int num_itens_const, clock_
     clock_t& tempo_best_sol, int& best_sol, double& alfa_sol, vector <vector<int> >& MS);
 	
 
-string Const_GRASP
-(int num_itens_const
-	, registro peca_const[]
-	, int barra_padrao
-	, string N_instancia,
+string Const_GRASP(int num_itens_const, registro peca_const[], int barra_padrao, string N_instancia,
 	clock_t t0_GRASP, vector<vector<int> >& MS_aux, double alfa, int& const_sol, int& qtd_padroes_const,
-	int iteracao, int& perda_total_const, clock_t& tempo_const)
-	;
+	int iteracao, int& perda_total_const, clock_t& tempo_const);
 
 string melhoria_bl(int num_itens_bl, registro peca_bl[], int barra_padrao, int num_barra_bl, int const_sol,
 	vector<vector<int> >& MS, int& qtd_padroes_const, int& local_sol, int num_itens_const,
