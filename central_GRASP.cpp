@@ -148,88 +148,23 @@ string const_prob_bl  (int qtd_padroes_const,vector<vector<int> >&MS_aux,int num
 
 	//!!!!!!!!!!!!!!!!!!!!!!!!!! preenche a struct auxiliar dos itens !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-	//!!!!!!!!!!!!!!!!!!!!!!!!!! escreve quais padroes foram escolhidos !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-	stringstream a0, a1, a2, a7, a11;// , a9;
-	string A0, A1, A2, A7, A11;// , A9;
+	
+	//preenche buffer que guarda a informacao dos itens que vao
+	//para a busca local
 	saida_str += "\nProblema da busca local:\n\n";
-	saida_str += "Maior perda individual: PC";
-	a0 << impi + 1;
-	a0 >> A0;
-	saida_str += A0;
-	saida_str += ".\n";
-	saida_str += "Maior perda total: PC";
-	//saida_str += to_string(impt + 1);
-	a1 << impt + 1;
-	a1 >> A1;
-	saida_str += A1;
-	saida_str += ".\n";
-	saida_str += "Maior numero de pecas: PC";
-	//saida_str += to_string(imqp + 1);
-	a2 << imqp + 1;
-	a2 >> A2;
-	saida_str += A2;
-	saida_str += ".\n";
-	saida_str += "Maior numero de pecas construidas: PC";
-	//saida_str += to_string(imqp + 1);
-	a11 << impp + 1;
-	a11 >> A11;
-	saida_str += A11;
-	saida_str += ".\n";
-	saida_str += "total de barras para a melhoria: ";
-	//saida_str += to_string(local_sol);
-	a7 << num_barra_bl;
-	a7 >> A7;
-	//cout << "total de barras para a mehoria: " << local_sol << endl;
-	saida_str += A7;
-	saida_str += ".\n";
+	saida_str += "Maior perda individual: PC" + to_string(impi + 1) + ".\n";
+	saida_str += "Maior perda total: PC" + to_string(impt + 1) + ".\n";
+	saida_str += "Maior numero de pecas: PC" + to_string(imqp + 1) + ".\n";
+	saida_str += "Maior numero de pecas construidas: PC" + to_string(imqp + 1) + ".\n";
+	saida_str += "total de barras para a melhoria: " + to_string(num_barra_bl) + ".\n";
 	saida_str += "Conteudo da struct peca_aux:\n";
 	for (int i = 0; i < num_itens_bl; i++) {
-		stringstream a3, a4, a5, a6;
-		string  A3, A4, A5, A6;
-		saida_str += "peca_aux[";
-		//saida_str += to_string(i + 1);
-		a3 << i + 1;
-		a3 >> A3;
-		saida_str += A3;
-		saida_str += "].demanda = ";
-		//saida_str += to_string(peca_aux[i].demanda);
-		a4 << peca_bl[i].demanda;
-		a4 >> A4;
-		saida_str += A4;
-		saida_str += ".\n";
-		saida_str += "peca_aux[";
-		//saida_str += to_string(i + 1);
-		saida_str += A3;
-		saida_str += "].tamanho = ";
-		//saida_str += to_string(peca_aux[i].tamanho);
-		a5 << peca_bl[i].tamanho;
-		a5 >> A5;
-		saida_str += A5;
-		saida_str += ".\n";
-		saida_str += "peca_aux[";
-		//saida_str += to_string(i + 1);
-		saida_str += A3;
-		saida_str += "].indice = ";
-		//saida_str += to_string(peca_aux[i].indice);
-		a6 << peca_bl[i].indice;
-		a6 >> A6;
-		saida_str += A6;
-		saida_str += ".\n";
-		A3.erase();
-		A4.erase();
-		A5.erase();
-		A6.erase();
+		saida_str += "peca_aux[" + to_string(i + 1) + "].demanda = " + to_string(peca_bl[i].demanda) + ".\n";
+		saida_str += "peca_aux[" + to_string(i + 1) + "].tamanho = " + to_string(peca_bl[i].tamanho) + ".\n";
+		saida_str += "peca_aux[" + to_string(i + 1) + "].indice = " + to_string(peca_bl[i].indice) + ".\n";
 	}
-	A0.erase();
-	A1.erase();
-	A2.erase();
-	A7.erase();
-	A11.erase();
-
-	//cout << "fim problema" << endl;
-
-	//!!!!!!!!!!!!!!!!!!!!!!!!!! escreve quais padroes foram escolhidos !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	
+	// retorna o buffer
 	return (saida_str);
 }
 
@@ -275,19 +210,9 @@ int central(vector<registro> item, int barra_padrao, int num_itens_const, clock_
 	vector<int> ind_padroes_escolhidos(100, -1);
 	int qtd_padroes_escolhidos = 0;
 
-
-	//t0_GRASP = clock();//Salva o tempo inicial na vari?vel
-
-	//cout << N_saida << endl;
-
 	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  leitura da instancia !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     str_aux = N_instancia + ".txt" ;
-    //ifstream dados;
-	//dados.open( str_aux.c_str() );   // entrada da instancia
-
-	//dados >> barra_padrao >> num_itens_const; // le a o tamanho da barra padrao e o numero de itens.
-
-	//vector <vector<int> > MS(100, vector<int>(num_itens_const + 2));// cria vetor que guarda a melhor solucao
+    
 	MS.resize(100,vector<int> (num_itens_const+2));
 	vector <int> Best_A(100);
 
@@ -295,10 +220,10 @@ int central(vector<registro> item, int barra_padrao, int num_itens_const, clock_
 	registro* peca_bl = new registro[num_itens_const];
 
 	for (int i = 0; i < num_itens_const; i++)
-	{// le os Valores de demanda e tamanho
+	{
 		peca_const[i].demanda = item[i].demanda;
 		peca_const[i].tamanho = item[i].tamanho;
-		peca_const[i].indice = i;
+		peca_const[i].indice = item[i].indice;
 	}
 
 	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -343,122 +268,38 @@ int central(vector<registro> item, int barra_padrao, int num_itens_const, clock_
 				}
 				tempo_sol = tempo_melh;
 
-				//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ESCREVE A SAIDA !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-				//saida_aux = "\nCALIBRAGEM:\n" + saida_const + saida_const_prob + melhoria_bl_str;
-				stringstream a0, a1, a2, a3, a4, a5;// a6, a7, a8, a9;
-				string A0, A1, A2, A3, A4, A5; //A6, A7, A8, A9;
-				saida_aux += "\nFinal GRASP:\nbarras usadas:";
-				//saida_aux += to_string(aux_sol);
-				a0 << total_sol;
-				a0 >> A0;
-				saida_aux += A0;
-				saida_aux += ".\n";
-				saida_aux += "melhoria:";
-				a5 << (num_barra_bl - local_sol);
-				a5 >> A5;
-				saida_aux += A5;
-				saida_aux += ".\n";
-				saida_aux += "alfa = ";
-				//saida_aux += to_string(alfa);
-				a1 << alfa;
-				a1 >> A1;
-				saida_aux += A1;
-				saida_aux += ".\n";
-				saida_aux += "Perda Total = ";
-				//saida_aux += to_string(perda_total);
-				a2 << perda_total;
-				a2 >> A2;
-				saida_aux += A2;
-				saida_aux += ".\n";
-				saida_aux += "Iteracao: ";
-				//saida_aux += to_string(iteracao);
-				a3 << iteracao;
-				a3 >> A3;
-				saida_aux += A3;
-				saida_aux += ".\n";
-				saida_aux += "Tempo = ";
-				//saida_aux += to_string(((double)(tempo - t0_GRASP)) / CLOCKS_PER_SEC);
-				a4 << ((double)tempo_sol) / CLOCKS_PER_SEC;
-				a4 >> A4;
-				saida_aux += A4;
-				saida_aux += " s";
-				saida_aux += ".\n";
+				//Escreve o buffer do arquivo de saida
+				saida_aux += "\nFinal GRASP:\n";
+				saida_aux += "barras usadas:" + to_string(total_sol) + ".\n";
+				saida_aux += "melhoria:" + to_string(num_barra_bl - local_sol) + ".\n";
+				saida_aux += "alfa = " + to_string(alfa) + ".\n";
+				saida_aux += "Perda Total = " + to_string(perda_total) + ".\n";
+				saida_aux += "Iteracao: " + to_string(iteracao) + ".\n";
+				saida_aux += "Tempo = " + to_string(((double)tempo_sol) / CLOCKS_PER_SEC) + "s.\n";
 				saida.clear();
 				saida += saida_aux;
 				saida_aux.clear();
-				A0.erase();
-				A1.erase();
-				A2.erase();
-				A3.erase();
-				A4.erase();
-				A5.erase();
-
-				//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ESCREVE A SAIDA !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 			}
 			else {
-				
 				total_sol = const_sol;
 				perda_total = perda_total_const;
 				qtd_padroes_total = qtd_padroes_const;
-
 				tempo_sol = tempo_const;
-				//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ESCREVE A SAIDA !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-				saida_aux = /*"\nCALIBRAGEM:\n" +*/ saida_const + saida_const_prob + "\n Nao Ocorreu Melhoria!! \n";
-				stringstream a0, a1, a2, a3, a4, a5;// a6, a7, a8, a9;
-				string A0, A1, A2, A3, A4, A5; //A6, A7, A8, A9;
-				saida_aux += "\nFinal GRASP:\nbarras usadas:";
-				//saida_aux += to_string(aux_sol);
-				a0 << const_sol;
-				a0 >> A0;
-				saida_aux += A0;
-				saida_aux += ".\n";
-				saida_aux += "melhoria:";
-				a5 << 0;
-				a5 >> A5;
-				saida_aux += A5;
-				saida_aux += ".\n";
-				saida_aux += "alfa = ";
-				//saida_aux += to_string(alfa);
-				a1 << alfa;
-				a1 >> A1;
-				saida_aux += A1;
-				saida_aux += ".\n";
-				saida_aux += "Perda Total = ";
-				//saida_aux += to_string(perda_total);
-				a2 << perda_total_const;
-				a2 >> A2;
-				saida_aux += A2;
-				saida_aux += ".\n";
-				saida_aux += "Iteracao: ";
-				//saida_aux += to_string(iteracao);
-				a3 << iteracao;
-				a3 >> A3;
-				saida_aux += A3;
-				saida_aux += ".\n";
-				saida_aux += "Tempo = ";
-				//saida_aux += to_string(((double)(tempo - t0_GRASP)) / CLOCKS_PER_SEC);
-				a4 << ((double)tempo_const) / CLOCKS_PER_SEC;
-				a4 >> A4;
-				saida_aux += A4;
-				saida_aux += " s";
-				saida_aux += ".\n";
+				//Escreve o buffer do arquivo de saida
+				saida_aux = saida_const + saida_const_prob + "\n Nao Ocorreu Melhoria!! \n";
+				saida_aux += "\nFinal GRASP:";
+				saida_aux += "\nbarras usadas:" + to_string(const_sol) + ".\n";
+				saida_aux += "melhoria:0.\n";
+				saida_aux += "alfa = " + to_string(alfa) + ".\n";
+				saida_aux += "Perda Total = " + to_string(perda_total) + ".\n";
+				saida_aux += "Iteracao: " + to_string(iteracao) + ".\n";
+				saida_aux += "Tempo = " + to_string(((double)tempo_const) / CLOCKS_PER_SEC) + " s.\n";
 				saida.clear();
 				saida += saida_aux;
 				saida_aux.clear();
-				A0.erase();
-				A1.erase();
-				A2.erase();
-				A3.erase();
-				A4.erase();
-
-				A5.erase();
-
 			}
-
-
-			//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ATUALIZA AS INFORMACOES DA STRING !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 			//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ATUALIZA A MELHOR SOLUCAO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 			if (best_sol == total_sol) {
@@ -466,7 +307,6 @@ int central(vector<registro> item, int barra_padrao, int num_itens_const, clock_
 			}
 			else {
 				if (best_sol > total_sol) {
-					//cout << total_sol << endl;
 					if (local_sol < num_barra_bl) {
 						M = "M";
 					}
@@ -517,110 +357,42 @@ int central(vector<registro> item, int barra_padrao, int num_itens_const, clock_
 						saida.clear();
 					}
 				}
-
 			}
-
 			MS_aux.clear();
 			saida.clear();
 			//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ATUALIZA A MELHOR SOLUCAO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		}
 	}
 
-	
-	stringstream a0, a1, a2, a3;// , a4, a5, a6, a7, a8, a9;
-	string A0, A1, A2, A3;// , A4, A5A6, A7, A8, A9;
-
-
-	a1 << ((double)tempo_best_sol - t0_GRASP) / CLOCKS_PER_SEC;
-	a1 >> A1;
-
-	best_saida += "Tempo Total = ";
-	//saida_aux += to_string(((double)(tempo - t0_GRASP)) / CLOCKS_PER_SEC);
+	//Escreve o buffer do arquivo de saida
 	tempo = clock();
-	a2 << ((double)tempo - t0_GRASP) / CLOCKS_PER_SEC;
-	a2 >> A2;
-	best_saida += A2;
-	best_saida += " s";
-	best_saida += ".\n";
+	best_saida += "Tempo Total = " + to_string(((double)tempo - t0_GRASP) / CLOCKS_PER_SEC) + " s.\n";
 
-	//estatistica_str += N_saida + " ";
-	//estatistica_str += A2 + " ";
-	//estatistica_str += A1 + " ";
-
-	//a3 << alfa_sol;
-	//a3 >> A3;
-	//estatistica_str += A3 + " ";
-
-	a0 << best_sol;
-	a0 >> A0;
-	//estatistica_str += A0 + " " + M + " " + R;
-
-	//N_saida += "_" + A0 +".txt";
-
-
-	A0.erase();
-	
+	//Abre escreve o arquivo de saida
 	ofstream teste;
 	teste.open(N_saida.c_str(), ios::trunc);
 	if (!teste.good()) {
 		cout << "o arquivo de saida n?o pode ser aberto." << endl;
-		return 0;
+		return 1;
 	}
 	teste << best_saida << endl;
 	teste.close();
 	best_saida.clear();
 
-
+	//Escreve o buffer do arquivo que contem
+	//o conteudo da matriz solucao
 	saida += "Conteudo da matriz MS:\n";
 	for (int i = 0; i < best_qtd_padroes_total; i++) {
-
-
-		stringstream a0, a3, a4;//, a5, a6, a7, a8, a9;
-		string A0, A3, A4;//, A5, A6, A7, A8, A9;
-		saida += "PC";
-		//saida += to_string(i+1);
-		a0 << i + 1;
-		a0 >> A0;
-		saida += A0;
-		saida += ": (";
+		saida += "PC" + to_string( i + 1 ) + ": (";
 		for (int j = 0; j < num_itens_const; j++) {
-			stringstream a1, a2;
-			string A1, A2;
-			if (j != num_itens_const - 1) {
-				//saida += to_string(MS[i][j]);
-				a1 << MS[i][j];
-				a1 >> A1;
-				saida += A1;
-				saida += ",";
-			}
-			else {
-				//saida += to_string(MS[i][j]);
-				a2 << MS[i][j];
-				a2 >> A2;
-				saida += A2;
-				saida += "), perda = ";
-			}
-			A1.erase();
-			A2.erase();
+			if (j != num_itens_const - 1) saida += to_string(MS[i][j]) + ','; 
+			else saida += to_string(MS[i][j]) + "), perda = ";
 		}
-		//saida += to_string(MS[i][num_itens_const]);
-		a3 << MS[i][num_itens_const];
-		a3 >> A3;
-		saida += A3;
-		saida += ", repeticoes = ";
-		//saida += to_string(MS[i][num_itens_const+1]);
-		a4 << MS[i][num_itens_const + 1];
-		a4 >> A4;
-		saida += A4;
-		saida += ".\n";
-
-		A0.erase();
-		A3.erase();
-		A4.erase();
+		saida += to_string(MS[i][num_itens_const]) + ", repeticoes = " + to_string(MS[i][num_itens_const+1]) + ".\n";
 	}
-
-
     str_aux = "Matriz_MS_" + N_instancia + "_Teste" + repeticao_instancia + ".txt";
+
+	//Abre e escreve o arquivo da matriz solucao
 	teste.open( str_aux.c_str() , ios::trunc);
 	if (!teste.good()) {
 		cout << "o arquivo de saida n?o pode ser aberto." << endl;
@@ -628,8 +400,6 @@ int central(vector<registro> item, int barra_padrao, int num_itens_const, clock_
 	}
 	teste << saida << endl;
 	teste.close();
-
-
 	return 0;
 	}
 	

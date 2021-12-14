@@ -60,6 +60,7 @@ int main(int argc, char *argv[])
 	repeticao_instancia, M, R, tempo_best_sol, best_sol, alfa_sol, MS);
 	if (status) {
 		cout << "falha na chamada do grasp";
+		system("PAUSE");
 		return 1;
 	}
 
