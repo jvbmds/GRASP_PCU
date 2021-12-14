@@ -1,43 +1,5 @@
 #include "Cabecalho.hpp"
 
-// Funcao que troca o conteudo de 2 variaveis.
-void troca_GRASP2D(registro& a, registro& b){
-	registro aux = a;
-	a = b;
-	b = aux;
-}
-
-// Procedimento auxiliar que recebe um segmento em peca[], a extremidade
-// esquerda do segmento em l e a extremidade direita em r.
-// Retorna peca[] reordenado decrescente.
-int particao_GRASP2D(
-	registro peca[], 
-	int l, 
-	int r)
-{
-	int j, k;
-	j = l;
-	k = r;
-	while (j < k)
-	{
-		while (j < k && peca[j].tamanho >= peca[k].tamanho) k--;
-		if (j < k) troca_GRASP2D(peca[j++], peca[k]);
-		while (peca[j].tamanho > peca[k].tamanho) j++;
-		if (j < k) troca_GRASP2D(peca[j], peca[k--]);
-	}
-	return j;
-}
-
-// Procedimento principal do algoritmo de ordenacao QuickSort
-void quicksort_GRASP2D(registro peca[], int l, int r){
-	int j;
-	if (l < r) {
-		j = particao_GRASP2D(peca, l, r);
-		quicksort_GRASP2D(peca, l, j - 1);
-		quicksort_GRASP2D(peca, j + 1, r);
-	}
-}
-
 //construcao do probelma da melhoria
 string const_prob_bl  (int qtd_padroes_const,vector<vector<int> >&MS_aux,int num_itens_const,
 	vector<int> &ind_padroes_escolhidos,int &qtd_padroes_escolhidos,registro peca_const[],registro peca_bl[],
@@ -338,19 +300,8 @@ int central(vector<registro> item, int barra_padrao, int num_itens_const, clock_
 		peca_const[i].tamanho = item[i].tamanho;
 		peca_const[i].indice = i;
 	}
-	//dados.close();//Fecha a inst?ncia.
 
 	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-
-	//@@@@@@@@@@@@@@@@@@@@@@@@@ Ordenamento da struct em ordem decrescente @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-
-	int l = 0; // l parametro da funcao particao
-	int r = num_itens_const - 1; // r parametro da funcao particao
-	quicksort_GRASP2D(peca_const, l, r); // Chama o procedimento de ordena??o.
-
-	//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-
 
 	//######################################## CALIBRAGEM ########################################################
 

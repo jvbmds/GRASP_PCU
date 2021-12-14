@@ -33,3 +33,10 @@ int maxpeca(registro peca[], int num_itens, double barra_aux, vector<int> demand
 int minpeca(registro peca[], int num_itens, vector<int> demanda_aux);
 
 int lir(registro peca[], double ALFA, int n, int iBETA, vector<int> demanda_aux);
+
+void troca(registro& a, registro& b);
+
+void quicksort(std::vector<registro> &item, int l, int r);
+
+string S_saida_desenho(vector<vector<int>> MS, vector<registro> item, vector<registro> item_residual, 
+int barra_padrao, int best_sol);

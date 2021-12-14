@@ -1,13 +1,6 @@
 #include "Cabecalho.hpp"
 
-string S_saida_desenho(
-	vector<vector<int>> MS, 		
-	vector<registro> item,			
-	vector<registro> item_residual,	
-	int barra_padrao,
-	int best_sol);
-
-int main(int argc, char** argv)
+int main(int argc, char *argv[])
 {	
 	//Declaracao de variaveis
 	vector<registro> item_residual; 		// Variavel que guarda os itens usados no problema residual (Obsoleto)
@@ -59,6 +52,8 @@ int main(int argc, char** argv)
 	// Fecha o arquivo de instancia
 	dados.close(); 
 
+	//ordena os itens de maneira decrescente
+	quicksort(item, 0 , numero_itens_instancia - 1);
 
 	// Chama a funcao de solucao
 	status = central(item, tamanho_barra_padrao, numero_itens_instancia, t0, nome_instancia, 
