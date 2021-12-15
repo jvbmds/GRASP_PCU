@@ -135,8 +135,6 @@ string melhoria_bl(int num_itens_bl, registro peca_bl[], int barra_padrao, int n
 				//cout << "fim repeticao" << endl;
 				//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! VE QUANTAS VEZES O PADRAO PODE SER REPETIDO !!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-				//cout << "inicio alocacao" << endl;
-
 				perda = perda + barra_aux;//Conta a perda de cada padrao.
 				aux_sol = aux_sol + repeticao;//conta as barras usadas.
 				perda_total = perda_total + perda * repeticao;//conta a perda de todos os padr?es.
@@ -161,148 +159,34 @@ string melhoria_bl(int num_itens_bl, registro peca_bl[], int barra_padrao, int n
 				//cout << "fim alocacao" << endl;
 				//!!!!!!!!!!!!!!!!!!!!!!!!!!!! ATUALIZA A DEMANDA !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-				//!!!!!!!!!!!!!!!!!!!!!!!!!!!! ESCREVE O PADRAO EM STRING !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+				
 
-				stringstream a0;//, a1, a2, a3, a4, a5, a6, a7, a8, a9;
-				string A0;//, A1, A2, A3, A4, A5, A6, A7, A8, A9;
-
-				saida_aux += "PC";
-				//saida_aux += to_string(k);
-				a0 << k;
-				a0 >> A0;
-				saida_aux += A0;
-				saida_aux += ":";
-
-				A0.erase();
-
-
+				
+				//Escreve a solucao criada no buffer de saida
+				saida_aux += "PC" + to_string(k) + ':';
 				for (i = 0; i < num_itens_bl; i++) {
-					if (i != num_itens_bl - 1) {
-						if (PC[i] > 0) {
-
-
-
-							stringstream a0, a1;//, a2, a3, a4, a5, a6, a7, a8, a9;
-							string A0, A1;//, A2, A3, A4, A5, A6, A7, A8, A9;
-							saida_aux += "(";
-							//saida_aux += to_string(PC[i]);
-							a0 << PC[i];
-							a0 >> A0;
-							saida_aux += A0;
-							saida_aux += ", ";
-							//saida_aux += to_string(peca_bl[peca_bl[i].indice].tamanho);
-							a1 << peca_bl[peca_bl[i].indice].tamanho;
-							a1 >> A1;
-							saida_aux += A1;
-							saida_aux += ")";
-
-							A0.erase();
-							A1.erase();
-
-						}
-					}
-					else {
+					if (i != num_itens_bl - 1) { if (PC[i] > 0) saida_aux += '(' + to_string(PC[i]) + ", " + to_string(peca_bl[peca_bl[i].indice].tamanho) + ')'; 
+					}else {
 						if (repeticao == 1) {
-							if (PC[i] > 0) {
-
-
-								stringstream a0, a1;//, a2, a3, a4, a5, a6, a7, a8, a9;
-								string A0, A1;//, A2, A3, A4, A5, A6, A7, A8, A9;
-								saida_aux += "(";
-								//saida_aux += to_string(PC[i]);
-								a0 << PC[i];
-								a0 >> A0;
-								saida_aux += A0;
-								saida_aux += ", ";
-								//saida_aux += to_string(peca_bl[peca_bl[i].indice].tamanho);
-								a1 << peca_bl[peca_bl[i].indice].tamanho;
-								a1 >> A1;
-								saida_aux += A1;
-								saida_aux += ")";
-
-								A0.erase();
-								A1.erase();
-
-
-							}
-
-
-
-							stringstream a0, a1;//, a2, a3, a4, a5, a6, a7, a8, a9;
-							string A0, A1;//, A2, A3, A4, A5, A6, A7, A8, A9;
-							saida_aux += " perda = ";
-							//saida_aux += to_string(perda);
-							a0 << perda;
-							a0 >> A0;
-							saida_aux += A0;
-							saida_aux += ", ";
-							//saida_aux += to_string(repeticao);
-							a1 << repeticao;
-							a1 >> A1;
-							saida_aux += A1;
-							saida_aux += " repeticao.\n";
-
-							A0.erase();
-							A1.erase();
-
+							if (PC[i] > 0) saida_aux += '(' + to_string(PC[i]) + ", " + to_string(peca_bl[peca_bl[i].indice].tamanho) + ')';
+							saida_aux += " perda = " + to_string(perda) + ", " + to_string(repeticao) + "repeticao.\n";
 						}
 						else {
-							if (PC[i] > 0) {
-
-								stringstream a0, a1;//, a2, a3, a4, a5, a6, a7, a8, a9;
-								string A0, A1;//, A2, A3, A4, A5, A6, A7, A8, A9;
-								saida_aux += "(";
-								//saida_aux += to_string(PC[i]);
-								a0 << PC[i];
-								a0 >> A0;
-								saida_aux += A0;
-								saida_aux += ", ";
-								//saida_aux += to_string(peca_bl[peca_bl[i].indice].tamanho);
-								a1 << peca_bl[peca_bl[i].indice].tamanho;
-								a1 >> A1;
-								saida_aux += A1;
-								saida_aux += ")";
-
-								A0.erase();
-								A1.erase();
-
-
-							}
-
-							stringstream a0, a1;//, a2, a3, a4, a5, a6, a7, a8, a9;
-							string A0, A1;//, A2, A3, A4, A5, A6, A7, A8, A9;
-							saida_aux += " perda = ";
-							//saida_aux += to_string(perda);
-							a0 << perda;
-							a0 >> A0;
-							saida_aux += A0;
-							saida_aux += ", ";
-							//saida_aux += to_string(repeticao);
-							a1 << repeticao;
-							a1 >> A1;
-							saida_aux += A1;
-							saida_aux += " repeticao.\n";
-
-							A0.erase();
-							A1.erase();
-
-
+							if (PC[i] > 0) saida_aux += '(' + to_string(PC[i]) + ", " + to_string(peca_bl[peca_bl[i].indice].tamanho) + ')';
+							saida_aux += " perda = " + to_string(perda) + ", " + to_string(repeticao) + " repeticoes.\n";	
 						}
 					}
 				}
-
-				//!!!!!!!!!!!!!!!!!!!!!!!!!!!! ESCREVE O PADRAO EM STRING !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
 				Aux.clear();
 				PC.clear();
 			} while (imnp >= 0);
 			tempo = clock();
+			tempo_melh = tempo - t0_GRASP;
 
 			//cout << "fim solucao" << endl;
 			//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ CRIA A SOLUCAO @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 			//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ ATUALIZA A SOLUCAO @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-			//cout << "inicio atualizacao" << endl;
 			if (local_sol > aux_sol) {
 				perda_total_bl = perda_total;
 				qtd_padroes_bl = k;
@@ -318,63 +202,20 @@ string melhoria_bl(int num_itens_bl, registro peca_bl[], int barra_padrao, int n
 					MS[qtd_padroes_const + i][num_itens_const + 1] = PC_aux[i][num_itens_bl + 1];
 				}
 
-				//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ESCREVE A SAIDA !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-				stringstream a0, a1, a2, a3, a4, a5;// a6, a7, a8, a9;
-				string A0, A1, A2, A3, A4, A5; //A6, A7, A8, A9;
-				saida_aux += "barras usadas:";
-				//saida_aux += to_string(aux_sol);
-				a0 << aux_sol;
-				a0 >> A0;
-				saida_aux += A0;
-				saida_aux += ".\n";
-				saida_aux += "melhoria:";
-				a5 << num_barra_bl - local_sol;
-				a5 >> A5;
-				saida_aux += A5 ;
-				saida_aux += ".\n";
-				saida_aux += "alfa = ";
-				//saida_aux += to_string(alfa);
-				a1 << alfa;
-				a1 >> A1;
-				saida_aux += A1;
-				saida_aux += ".\n";
-				saida_aux += "Perda Total = ";
-				//saida_aux += to_string(perda_total);
-				a2 << perda_total;
-				a2 >> A2;
-				saida_aux += A2;
-				saida_aux += ".\n";
-				saida_aux += "Iteracao: ";
-				//saida_aux += to_string(iteracao);
-				a3 << iteracao;
-				a3 >> A3;
-				saida_aux += A3;
-				saida_aux += ".\n";
-				saida_aux += "Tempo = ";
-				//saida_aux += to_string(((double)(tempo - t0_GRASP)) / CLOCKS_PER_SEC);
-				tempo_melh = tempo - t0_GRASP;
-				a4 << ((double)tempo_melh) / CLOCKS_PER_SEC;
-				a4 >> A4;
-				saida_aux += A4;
-				saida_aux += " s";
-				saida_aux += ".\n";
+				//Preenche o buffer da saida com as informacoes da solucao
+				saida_aux += "barras usadas:" + to_string(aux_sol) + ".\n";
+				saida_aux += "melhoria:" + to_string(num_barra_bl - local_sol) + ".\n";
+				saida_aux += "alfa = " + to_string(alfa) + ".\n";
+				saida_aux += "Perda Total = " + to_string(perda_total) + ".\n";
+				saida_aux += "Iteracao: " + to_string(iteracao) + ".\n";
+				saida_aux += "Tempo = " + to_string(((double)tempo_melh) / CLOCKS_PER_SEC) + " s.\n";
 				melhor_solucao.clear();
 				melhor_solucao += saida_aux;
-
-				A0.erase();
-				A1.erase();
-				A2.erase();
-				A3.erase();
-				A4.erase();
-				A5.erase();
-
-				//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ESCREVE A SAIDA !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+				
 
 				//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ ATUALIZA A SOLUCAO @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 			}
-			//cout << "fim atualizacao" << endl;
 			k = 0;
 			perda_total = 0;
 			aux_sol = 0;
@@ -383,7 +224,6 @@ string melhoria_bl(int num_itens_bl, registro peca_bl[], int barra_padrao, int n
 	}
 
 	//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ PROCESSO $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-	//cout << "fim melhoria" << endl;
 	PC_aux.clear();
 	demanda_aux.clear();
 	return (melhor_solucao);
