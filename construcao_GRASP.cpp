@@ -129,7 +129,6 @@ string Const_GRASP(int num_itens_const, registro peca_const[], int barra_padrao,
 
 	imnp = minpeca(peca_const, num_itens_const, demanda_aux);
 	//################################ construcao do padrao de corte completo #############################################
-	saida_aux += "Construcao:\n\n";
 	imnp = minpeca(peca_const, num_itens_const, demanda_aux);
 	do {
 		perda = 0;
@@ -238,206 +237,33 @@ string Const_GRASP(int num_itens_const, registro peca_const[], int barra_padrao,
 		//!!!!!!!!!!!!!!!!!!!!!!! atualiza a demanda e o indice da menor peca !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
-		//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  escreve o padrao criado  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-		stringstream a0;//, a1, a2, a3, a4, a5, a6, a7, a8, a9;
-		string A0;//, A1, A2, A3, A4, A5, A6, A7, A8, A9;
-		saida_aux += "PC";
-		//saida_aux += to_string(k);
-		a0 << qtd_padroes_const;
-		a0 >> A0;
-		saida_aux += A0;
-		saida_aux += ":";
-		A0.erase();
+		// escreve o no buffer da saida o padrao de corte criado
+		saida_aux += "PC" + to_string(qtd_padroes_const) + ':';
 		for (i = 0; i < num_itens_const; i++) {
-			if (i != num_itens_const - 1) {
-				if (PC[i] > 0) {
-
-					stringstream a0, a1;//, a2, a3, a4, a5, a6, a7, a8, a9;
-					string A0, A1;//, A2, A3, A4, A5, A6, A7, A8, A9;
-					saida_aux += "(";
-					//saida_aux += to_string(PC[i]);
-					a0 << PC[i];
-					a0 >> A0;
-					saida_aux += A0;
-					saida_aux += ", ";
-					//saida_aux += to_string(peca[peca[i].indice].tamanho);
-					a1 << peca_const[i].tamanho;
-					a1 >> A1;
-					saida_aux += A1;
-					saida_aux += ")";
-
-					A0.erase();
-					A1.erase();
-					///////////////////////////////////////////////MUDEI AQUI FIM
-				}
-			}
-			else {
+			if (i != num_itens_const - 1 ){ if( PC[i] > 0) saida_aux += '(' + to_string(PC[i]) + ", " + to_string(peca_const[i].tamanho) + ')'; 
+			}else {
 				if (repeticao == 1) {
-					if (PC[i] > 0) {
-						///////////////////////////////////////////////MUDEI AQUI
-
-						stringstream a0, a1;//, a2, a3, a4, a5, a6, a7, a8, a9;
-						string A0, A1;//, A2, A3, A4, A5, A6, A7, A8, A9;
-						saida_aux += "(";
-						//saida_aux += to_string(PC[i]);
-						a0 << PC[i];
-						a0 >> A0;
-						saida_aux += A0;
-						saida_aux += ", ";
-						//saida_aux += to_string(peca[peca[i].indice].tamanho);
-						a1 << peca_const[i].tamanho;
-						a1 >> A1;
-						saida_aux += A1;
-						saida_aux += ")";
-
-						A0.erase();
-						A1.erase();
-						///////////////////////////////////////////////MUDEI AQUI FIM
-
-					}
-
-					///////////////////////////////////////////////MUDEI AQUI
-
-					stringstream a0, a1;//, a2, a3, a4, a5, a6, a7, a8, a9;
-					string A0, A1;//, A2, A3, A4, A5, A6, A7, A8, A9;
-					saida_aux += " perda = ";
-					//saida_aux += to_string(perda);
-					a0 << perda;
-					a0 >> A0;
-					saida_aux += A0;
-					saida_aux += ", ";
-					//saida_aux += to_string(repeticao);
-					a1 << repeticao;
-					a1 >> A1;
-					saida_aux += A1;
-					saida_aux += " repeticao.\n";
-
-					A0.erase();
-					A1.erase();
-					///////////////////////////////////////////////MUDEI AQUI FIM
+					if (PC[i] > 0) saida_aux += '(' + to_string(PC[i]) + ", " + to_string(peca_const[i].tamanho) + ')';
+					saida_aux += " perda = " + to_string(perda) + ", 1 repeticao.\n";
 				}
 				else {
-					if (PC[i] > 0) {
-
-						///////////////////////////////////////////////MUDEI AQUI
-
-						stringstream a0, a1;//, a2, a3, a4, a5, a6, a7, a8, a9;
-						string A0, A1;//, A2, A3, A4, A5, A6, A7, A8, A9;
-						saida_aux += "(";
-						//saida_aux += to_string(PC[i]);
-						a0 << PC[i];
-						a0 >> A0;
-						saida_aux += A0;
-						saida_aux += ", ";
-						//saida_aux += to_string(peca[peca[i].indice].tamanho);
-						a1 << peca_const[i].tamanho;
-						a1 >> A1;
-						saida_aux += A1;
-						saida_aux += ")";
-
-						A0.erase();
-						A1.erase();
-						///////////////////////////////////////////////MUDEI AQUI FIM
-
-					}
-
-					///////////////////////////////////////////////MUDEI AQUI
-
-					stringstream a0, a1;//, a2, a3, a4, a5, a6, a7, a8, a9;
-					string A0, A1;//, A2, A3, A4, A5, A6, A7, A8, A9;
-					saida_aux += " perda = ";
-					//saida_aux += to_string(perda);
-					a0 << perda;
-					a0 >> A0;
-					saida_aux += A0;
-					saida_aux += ", ";
-					//saida_aux += to_string(repeticao);
-					a1 << repeticao;
-					a1 >> A1;
-					saida_aux += A1;
-					saida_aux += " repeticao.\n";
-
-					A0.erase();
-					A1.erase();
-					///////////////////////////////////////////////MUDEI AQUI FIM
+					if (PC[i] > 0) saida_aux += '(' + to_string(PC[i]) + ", " + to_string(peca_const[i].tamanho) + ')';
+					saida_aux += " perda = " + to_string(perda) + ", " + to_string(repeticao) + " repeticoes.\n";
 				}
 			}
 		}
 
-		//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  escreve o padr�o criado  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		Aux.clear();
 		PC.clear();
 	} while (imnp >= 0);
 
-	//################################ construcao do padrao de corte completo #############################################
-
-
-	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  escreve o padr�o criado  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-
+	//Escreve as informacoes do padrao criado no buffer da saida
 	tempo = clock();
-	string A9, A8, A10, A3, A4;//, A5, A6, A7, A8, A9;
-	stringstream a9, a8, a10, a3, a4;//, a5, a6, a7, a8, a9
-	saida_aux += "barras usadas:";
-	//cout << "barras usadas:" << barra << endl;
-	//saida_aux += to_string(barra);
-	a9 << const_sol;
-	a9 >> A9;
-	saida_aux += A9;
-	saida_aux += ".\n";
-	saida_aux += "Melhor alfa = ";
-	//saida_aux += to_string(alfa);
-	a8 << alfa;
-	a8 >> A8;
-	saida_aux += A8;
-	saida_aux += ".\n";
-	saida_aux += "Perda Total = ";
-	//saida_aux += to_string(perda_total_const);
-	a10 << perda_total_const;
-	a10 >> A10;
-	saida_aux += A10;
-	saida_aux += ".\n";
-	saida_aux += "Iteracao: ";
-	//saida_aux += to_string(iteracao);
-	a3 << iteracao;
-	a3 >> A3;
-	saida_aux+= A3;
-	saida_aux += ".\n";
-	saida_aux += "Tempo = ";
-	//saida_aux += to_string(((double)(tempo - t0_GRASP)) / CLOCKS_PER_SEC);
 	tempo_const = tempo - t0_GRASP;
-	a4 << ((double)tempo_const) / CLOCKS_PER_SEC;
-	a4 >> A4;
-	saida_aux += A4;
-	saida_aux += " s";
-	saida_aux += ".\n";
-
-
-	A9.erase();
-	A8.erase();
-	A10.erase();
-
-	A3.erase();
-	A4.erase();
-
-	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  escreve o padr�o criado  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	/*
-	///////////////////////////////////////////////MUDEI AQUI FIM
-
-	N_saida = "busca_local.txt";
-	teste.open(N_saida, ios::trunc);
-	if (!teste.good()) {
-		cout << "o arquivo de saida n?o pode ser aberto." << endl;
-		return 0;
-	}
-	teste << saida_aux << endl;
-	teste.close();
-	saida_aux.clear();
-	*/
-	//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ PROCESSO $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-
-	//cout << "inicio construcao" << endl;
-
+	saida_aux += "barras usadas:" + to_string(const_sol) + ".\n";
+	saida_aux += "Melhor alfa = " + to_string(alfa) + ".\n";
+	saida_aux += "Perda Total = " + to_string(perda_total_const) + ".\n";
+	saida_aux += "Iteracao: " + to_string(iteracao) + ".\n";
+	saida_aux += "Tempo = " + to_string(((double)tempo_const) / CLOCKS_PER_SEC) + " s.\n";
 	return (saida_aux);
 }

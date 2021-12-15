@@ -402,4 +402,3 @@ int central(vector<registro> item, int barra_padrao, int num_itens_const, clock_
 	teste.close();
 	return 0;
 	}
-	
